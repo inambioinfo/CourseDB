@@ -1,0 +1,20 @@
+<table>
+	<tr>
+		<th>Course Title</th>
+		<th>Duration</th>
+		<th>Details</th>
+	</tr>
+	{% if course_list %}
+		{% for course in course_list %}
+			<tr>
+				<td>{{ course.title }}</td>
+				<td>{{ course.duration.length_text }}</td>
+				<td>Details</td>
+			</tr>
+		{% endfor %}
+	{% else %}
+	<tr>
+		<td colspan="3">No courses available</td>
+	</tr>
+	{% endif %}
+</table>
