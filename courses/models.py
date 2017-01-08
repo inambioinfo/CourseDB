@@ -16,3 +16,13 @@ class Course(models.Model):
 	
 	def __str__(self):
 		return self.title
+
+class CourseInstance(models.Model):
+	course = models.ForeignKey(Course,on_delete=models.PROTECT)
+	start_datetime = models.DateTimeField()
+	end_datetime = models.DateTimeField()
+	site = models.CharField(max_length=200)
+	location = models.CharField(max_length=200)
+	
+	def __str__(self):
+		return self.course.title+":"+str(self.start_datetime)
