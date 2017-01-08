@@ -9,7 +9,7 @@
 			<tr>
 				<td>{{ course.title }}</td>
 				<td>{{ course.duration.length_text }}</td>
-				<td>Details</td>
+				<td><a href="{% url 'course' course.id %}">Details</a></td>
 			</tr>
 		{% endfor %}
 	{% else %}
