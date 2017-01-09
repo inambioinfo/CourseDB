@@ -1,0 +1,14 @@
+table {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+th {
+	background: #444444;
+	color: white;
+}
+
+td {
+	background: #DDDDDD;
+	color: black;
+}
