@@ -39,3 +39,11 @@ class Booking(models.Model):
 	
 	def __str__(self):
 		return self.user.email+" on "+self.course_instance.course.title
+
+class Request(models.Model):
+	course = models.ForeignKey(Course, on_delete=models.PROTECT)
+	person = models.ForeignKey(User, on_delete=models.PROTECT)
+	date_requested = models.DateTimeField()
+	
+	def __str__(self):
+		return self.user.email+" on "+self.course.title
