@@ -47,3 +47,31 @@ class Request(models.Model):
 	
 	def __str__(self):
 		return self.user.email+" on "+self.course.title
+
+class LearningObjective(models.Model):
+	objective_text = models.CharField(max_length=255)
+	course = models.ForeignKey(Course, on_delete=models.CASCADE)
+	
+	def __str__(self):
+		return self.objective_text
+
+
+class Feedback(models.Model):
+	code = models.CharField(max_length=200, db_index=True)
+	comments = models.TextField()
+	course_instance = models.ForeignKey(CourseInstance, on_delete=models.CASCADE)
+
+	def __str__(self):
+		return "Feedback code="+self.code+" on "+course_instance.course.title
+
+class FeedbackResponse(models.Model):
+	value = models.IntegerField()
+	feedback = models.ForeignKey(Feedback, on_delete=models.PROTECT)
+	# We don't store a key to the learning objective here since over time
+	# the objectives may well change and we don't want to have to keep them
+	# all linked in the database.  We can just collate the different values
+	# we see for an individual course and present those.
+	objective_text = models.CharField(max_length=255)
+	
+	def __str__(self):
+		return objective_text+" score="+str(value)
