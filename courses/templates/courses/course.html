@@ -7,4 +7,11 @@
 {{ course.description }}
 </p>
 
+<h2>Learning Objectives</h2>
+<ul>
+{% for objective in course.learningobjective_set.all %}
+	<li>{{ objective.objective_text }}</li>
+{% endfor %}
+</ul>
+
 {% endblock %}
