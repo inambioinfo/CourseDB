@@ -14,4 +14,26 @@
 {% endfor %}
 </ul>
 
+<h2>Dates</h2>
+<table>
+	<tr>
+		<th>Course Title</th>
+		<th>Start Date</th>
+		<th>End Date</th>
+		<th>Site</th>
+		<th>Location</th>
+	</tr>
+	<!-- This is broken - need to figure out how to only show future dates -->
+		{% for instance in course.courseinstance_set.all %}
+				<td>{{ instance.course.title }}</td>
+				<td>{{ instance.start_datetime }}</td>
+				<td>{{ instance.end_datetime }}</td>
+				<td>{{ instance.site }}</td>
+				<td>{{ instance.location }}</td>
+			</tr>
+		{% endfor %}
+</table>
+
+
+
 {% endblock %}

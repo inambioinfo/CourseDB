@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.timezone import now
 
 class Duration(models.Model):
 	length_text = models.CharField(max_length=200)
@@ -25,9 +26,12 @@ class CourseInstance(models.Model):
 	site = models.CharField(max_length=200)
 	location = models.CharField(max_length=200)
 	spaces = models.IntegerField(default=0)
-	
+		
 	def is_full(self):
-		return len(self.booking_set.all()) >= self
+		return len(self.booking_set.all()) >= self.spaces
+	
+	def has_run(self):
+		return self.start_datetime <= now
 	
 	def __str__(self):
 		return self.course.title+":"+str(self.start_datetime)
