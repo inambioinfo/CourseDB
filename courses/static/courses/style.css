@@ -1,14 +1,27 @@
+body {
+	font-family: sans-serif;	
+}
+
+h1 {
+	text-align: center;
+}
+
+p { 
+	text-align: center;
+}
 table {
 	margin-left: auto;
 	margin-right: auto;
 }
 
 th {
-	background: #444444;
+	background: #000088;
 	color: white;
+	padding: 0.5em;
 }
 
 td {
 	background: #DDDDDD;
 	color: black;
+	padding: 0.5em;
 }
