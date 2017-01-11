@@ -36,6 +36,15 @@ class CourseInstance(models.Model):
 	def __str__(self):
 		return self.course.title+":"+str(self.start_datetime)
 
+class UserDetails(models.Model):
+	person = models.ForeignKey(User,on_delete=models.PROTECT)
+	first_name = models.CharField(max_length=200)
+	last_name = models.CharField(max_length=200)
+	phone = models.CharField(max_length=200)
+	
+	def __str__(self):
+		return self.first_name+" "+self.last_name
+
 class Booking(models.Model):
 	course_instance = models.ForeignKey(CourseInstance, on_delete=models.PROTECT)
 	person = models.ForeignKey(User, on_delete=models.PROTECT)

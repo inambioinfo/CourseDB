@@ -11,7 +11,15 @@
     	{% block sidebar %}
     	<h2>Navigation</h2>
         <ul>
-            <li><a href="{% url 'courses' %}">Courses</a></li>
+        	{% if request.user.is_authenticated %}
+        	<li>{{ request.user.username }}</li>
+        	<li><a href="{% url 'logout' %}?next={% url 'courses' %}">Log Out</a></li>
+        	{% else %}
+        	<li><a href="{% url 'login' %}">Login</a></li>
+            {% endif %}
+        </ul>
+        <ul>	
+        	<li><a href="{% url 'courses' %}">Courses</a></li>
             <li><a href="{% url 'diary' %}">Course Diary</a></li>
         </ul>
         {% endblock %}

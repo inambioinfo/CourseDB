@@ -4,6 +4,7 @@ from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import *
 from django.utils import timezone
+from django import forms
 
 class CoursesView(generic.ListView):
 	template_name = 'courses/courses.html'
@@ -26,3 +27,4 @@ class CourseView(generic.DetailView):
 class InstanceView(generic.DetailView):
 	model = CourseInstance
 	template_name = 'courses/instance.html'
+
