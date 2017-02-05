@@ -23,8 +23,7 @@
 		<th>Site</th>
 		<th>Location</th>
 	</tr>
-	<!-- This is broken - need to figure out how to only show future dates -->
-		{% for instance in course.courseinstance_set.all %}
+		{% for instance in instances %}
 				<td>{{ instance.course.title }}</td>
 				<td>{{ instance.start_datetime }}</td>
 				<td>{{ instance.end_datetime }}</td>
